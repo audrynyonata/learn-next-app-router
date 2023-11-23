@@ -3,7 +3,23 @@
 Node version: v18  
 Next.js version: 14 (using app router)
 
+Pages router: https://github.com/audrynyonata/learn-next-pages-router
+
 ## App vs Pages router
+
+app (recommended):
+
+- advanced features
+- suitable for complex application
+- more flexible
+- steep learning curve
+
+pages:
+
+- basic features
+- best for simple application
+- less flexible
+- easier to learn
 
 ### 1. Server vs Client Component
 
