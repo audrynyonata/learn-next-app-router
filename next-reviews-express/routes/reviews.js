@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
     : reviews;
 
   const compare = (a, b, keys) => {
-    if (keys.length === 0) return 0;
+    if (!keys || keys.length === 0) return 0;
     const [key, direction = 'asc'] = keys[0].split(':');
     if (typeof a[key] === 'string') {
       const result = a[key].localeCompare(b[key]);
@@ -48,9 +48,9 @@ router.get('/', async (req, res) => {
   filteredResult.sort((a, b) => compare(a, b, sort));
 
   const serializedResult = filteredResult.map((review) => {
-    const attributes = {};
+    let attributes = {};
 
-    !!fields &&
+    if (fields) {
       fields.forEach((field) => {
         switch (field) {
           case 'id':
@@ -76,6 +76,9 @@ router.get('/', async (req, res) => {
             break;
         }
       });
+    } else {
+      attributes = review;
+    }
 
     !!populate &&
       Object.entries(populate).forEach(([key, options]) => {
