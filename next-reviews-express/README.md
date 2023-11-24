@@ -6,6 +6,6 @@ How to run:
 
 ```
 npm install
-nodemon index.js
+npm start
 // Default port: http://localhost:1337
 ```
